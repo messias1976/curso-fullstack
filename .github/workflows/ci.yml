@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run lint (if script exists)
+        run: npm run lint --if-present
+
+      - name: Run build (if script exists)
+        run: npm run build --if-present
+
+      - name: Run tests (skip placeholder)
+        run: |
+          TEST_SCRIPT=$(node -p "require('./package.json').scripts?.test || ''")
+          if [ "$TEST_SCRIPT" = "echo \"Error: no test specified\" && exit 1" ]; then
+            echo "Skipping placeholder test script"
+            exit 0
+          fi
+          npm test
