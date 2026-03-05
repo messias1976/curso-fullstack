@@ -1,0 +1,7 @@
+{
+    "editor.formatOnSave": true,
+    "eslint.defautFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "always"
+    }
+}
