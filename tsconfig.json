@@ -1,0 +1,16 @@
+{
+  // Visit https://aka.ms/tsconfig to read more about this file
+  "compilerOptions": {
+  
+    // See also https://aka.ms/tsconfig/module
+    "module": "nodenext",
+    "target": "es2024", //ES2024 is the latest version of ECMAScript as of June 2024
+    "moduleResolution": "nodenext",
+    "skipLibCheck": true,
+    "types": [],
+    "outDir": "./dist"
+  
+   
+  },
+  "include": ["src"]
+}
